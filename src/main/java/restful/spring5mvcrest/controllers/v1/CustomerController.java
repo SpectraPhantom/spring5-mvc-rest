@@ -1,11 +1,14 @@
 package restful.spring5mvcrest.controllers.v1;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import restful.spring5mvcrest.api.v1.model.CustomerDTO;
 import restful.spring5mvcrest.api.v1.model.CustomerListDTO;
 import restful.spring5mvcrest.services.CustomerService;
 
+@Api
 @RestController
 @RequestMapping(CustomerController.BASE_URL)
 public class CustomerController {
@@ -18,6 +21,7 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
+    @ApiOperation(value = "This will get a list of customers.",notes = "There are some notes about API")
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public CustomerListDTO getAllCustomers() {
